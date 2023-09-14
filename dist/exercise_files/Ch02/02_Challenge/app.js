@@ -1,15 +1,21 @@
 "use strict";
+var TodoStatus;
+(function (TodoStatus) {
+    TodoStatus["Done"] = "done";
+    TodoStatus["InProgres"] = "in-progress";
+    TodoStatus["Todo"] = "todo";
+})(TodoStatus || (TodoStatus = {}));
 const todoItems = [
-    { id: 1, title: "Learn HTML", status: "done", completedOn: new Date("2021-09-11") },
-    { id: 2, title: "Learn TypeScript", status: "in-progress" },
-    { id: 3, title: "Write the best app in the world", status: "todo" },
+    { id: 1, title: "Learn HTML", status: TodoStatus.Done, completedOn: new Date("2021-09-11") },
+    { id: 2, title: "Learn TypeScript", status: TodoStatus.InProgres },
+    { id: 3, title: "Write the best app in the world", status: TodoStatus.Todo },
 ];
 function addTodoItem(todo) {
     const id = getNextId(todoItems);
     const newTodo = {
         id,
         title: todo,
-        status: "todo",
+        status: TodoStatus.Todo,
     };
     todoItems.push(newTodo);
     return newTodo;
